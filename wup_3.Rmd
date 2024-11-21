@@ -19,8 +19,8 @@ Is there a difference between the alcohol consumed between the row you choose to
 
 ##Method 
 predict alcohol consumption base on where you sit
-$H_0$
-$H_A$
+$H_0$         
+$H_A$.    
 
 alcohol is numerical
 seat is categorical, so we use the helper file
@@ -41,10 +41,21 @@ basicCN + geom_boxplot()
 ```{r}
 basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='errorbar') + labs(title="Fancy notch boxplot \n with 2 lines")
 ```
-
+ boxplot shows the drunks are mostly in the back.
 ## Numerical Summarys 
 
+```{r}
+favstats(alcohol~Seat,data=ucdavis1)
+```
+The people seated in the back drink more than the people seated in the middle and front around three times more  
+
 ## Inferential Tests
+
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
 
 ## Conclusions
 
